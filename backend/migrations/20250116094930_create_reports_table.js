@@ -3,13 +3,13 @@ export const up = function (knex) {
     table.uuid("id").primary().defaultTo(knex.raw("(UUID())"));
     table.string("schoolName").notNullable();
     table.string("slug").unique();
-    table.text("images"); // Store images as a comma-separated string
+    table.text("images"); 
     table.string("video");
     table
       .enu("status", ["pending", "approved", "disapproved"])
       .defaultTo("pending");
     table.string("schoolLocation");
-    table.text("issueType"); // Store issue types as a comma-separated string
+    table.text("issueType"); 
     table.text("description");
     table.text("comment");
     table.uuid("userId").references("id").inTable("users").onDelete("CASCADE");

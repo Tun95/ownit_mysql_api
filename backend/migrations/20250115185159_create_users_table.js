@@ -18,14 +18,14 @@ export const up = function (knex) {
     table.string("parentAddress").nullable();
     table.string("parentRelationship").nullable();
 
-    table.string("slug").unique().nullable(); // Add slug column
+    table.string("slug").unique().nullable();
 
-    table.boolean("is_admin").defaultTo(false); // Super admin flag
+    table.boolean("is_admin").defaultTo(false); 
     table.boolean("is_blocked").defaultTo(false);
     table.string("password").notNullable();
     table
       .enu("role", ["user", "admin", "teacher", "student"])
-      .defaultTo("user"); // Add roles
+      .defaultTo("user"); 
       
     table.timestamp("last_login").nullable();
     table.timestamp("deleted_at").nullable();
@@ -42,8 +42,8 @@ export const up = function (knex) {
     // Indexes
     table.index("email");
     table.index("is_admin");
-    table.index("role"); // Index for roles
-    table.index("slug"); // Index for slug
+    table.index("role"); 
+    table.index("slug"); 
   });
 };
 

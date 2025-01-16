@@ -20,11 +20,11 @@ ReportModel.createReport = async (reportData) => {
       id: id,
       schoolName: reportData.schoolName,
       slug: slug,
-      images: reportData.images.join(","), // Store as a comma-separated string
+      images: reportData.images.join(","),
       video: reportData.video,
       status: reportData.status || "pending",
       schoolLocation: reportData.schoolLocation,
-      issueType: reportData.issueType.join(","), // Store as a comma-separated string
+      issueType: reportData.issueType.join(","),
       description: reportData.description,
       comment: reportData.comment,
       userId: reportData.userId,
@@ -43,9 +43,6 @@ ReportModel.createReport = async (reportData) => {
 
     // Handle duplicate slug generation
     await ReportModel.generateUniqueSlug(id, createdReport.schoolName);
-
-    // Log the created report for debugging
-    // console.log("Created Report:", createdReport);
 
     return createdReport;
   } catch (error) {
@@ -72,7 +69,7 @@ ReportModel.generateUniqueSlug = async (id, schoolName) => {
     }
     // Update with unique slug
     await db("reports")
-      .where({ id: id.toString() }) // Ensure id is converted to string
+      .where({ id: id.toString() }) 
       .update({
         slug: `${baseSlug}-${counter}`,
       });

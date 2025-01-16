@@ -97,7 +97,7 @@ const UserModel = {
       resetPasswordExpires: expires,
     });
 
-    return resetToken; // Return the plain token to send to the user
+    return resetToken;
   },
 
   // Method to find user by reset token and check expiration
